@@ -33,7 +33,7 @@ type application struct {
 }
 
 func main() {
-       var cfg config
+    var cfg config
 
     flag.IntVar(&cfg.port, "port", 4000, "API server port")
     flag.StringVar(&cfg.env, "env", "development", "Environment (development|staging|production)")
