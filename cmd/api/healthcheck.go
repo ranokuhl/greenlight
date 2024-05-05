@@ -1,20 +1,24 @@
 package main
 
 import (
-    "net/http"
+	"net/http"
 )
 
-
 func (app *application) healthcheckHandler(w http.ResponseWriter, r *http.Request) {
-    data := map[string]string{
-        "status":      "available",
-        "environment": app.config.env,
-        "version":     version,
-    }
+	// Declare an envelope map containing the data for the response. Notice that the way
+	// we've constructed this means the environment and version data will now be nested
+	// under a system_info key in the JSON response.
+	env := envelope{
+		"status": "available",
+		"system_info": map[string]string{
+			"environment": app.config.env,
+			"version":     version,
+		},
+	}
 
-    err := app.writeJSON(w, http.StatusOK, data, nil)
-    if err != nil {
-        app.logger.Error(err.Error())
-        http.Error(w, "The server encountered a problem and could not process your request", http.StatusInternalServerError)
-    }
+	err := app.writeJSON(w, http.StatusOK, env, nil)
+	if err != nil {
+		// Use the new serverErrorResponse() helper.
+		app.serverErrorResponse(w, r, err)
+	}
 }
