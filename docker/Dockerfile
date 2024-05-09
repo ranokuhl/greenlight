@@ -4,10 +4,11 @@ COPY . .
 RUN go mod download
 
 # RUN go build -buildvcs=false -o ./main
-RUN go build -o cmd/api ./cmd/api
+# RUN go build -o cmd/api ./cmd/api
+RUN go build -o bin/main ./cmd/api
 
 
 ENV PORT 8081
 EXPOSE 8081
 
-CMD [ "./cmd/api/api -db-max-open-conns=50 -db-max-idle-conns=50 -db-max-idle-time=2h30m" ]
+CMD [ "./bin/main -db-max-open-conns=50 -db-max-idle-conns=50 -db-max-idle-time=2h30m" ]
