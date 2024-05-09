@@ -1,4 +1,4 @@
-module greenlight
+module github.com/ranokuhl/greenlight
 
 go 1.19
 
