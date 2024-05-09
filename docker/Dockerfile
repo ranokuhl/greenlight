@@ -6,7 +6,8 @@ RUN go mod download
 
 # RUN go build -buildvcs=false -o ./main
 # RUN go build -o cmd/api ./cmd/api
-RUN go build -o ./bin/main ./cmd/api
+# Build the application with verbose output
+RUN go build -x -o ./bin/main ./cmd/api
 
 
 ENV PORT 8081
