@@ -5,7 +5,7 @@ import (
 	"database/sql"
 	"flag"
 	"fmt"
-	"greenlight/internal/data"
+	"github.com/ranokuhl/greenlight/internal/data"
 	"log"
 	"log/slog"
 	"net/http"

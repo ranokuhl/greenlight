@@ -4,7 +4,7 @@ import (
 	"context"
 	"database/sql"
 	"errors"
-	"greenlight/internal/validator"
+	"github.com/ranokuhl/greenlight/internal/validator"
 	"time"
 
 	"github.com/lib/pq"
