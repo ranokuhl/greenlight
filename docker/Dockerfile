@@ -6,7 +6,7 @@ RUN go mod download
 
 # RUN go build -buildvcs=false -o ./main
 # RUN go build -o cmd/api ./cmd/api
-RUN go build -o bin/main ./cmd/api
+RUN go build -o ./bin/main ./cmd/api
 
 
 ENV PORT 8081
